@@ -1,17 +1,12 @@
 describe('Login', () => {
-  it('successfully', () => {
+  beforeEach(function() {
     cy.login()
-
-    cy.get(".qa-user-avatar").should("be.visible")
+    cy.visit('/')
   })
-
-  it('logout', () => {
-    cy.login()
-
-    cy.get(".qa-user-avatar").should("be.visible")
-
+  
+  it('successfully', () => {
     cy.logout()
 
-    cy.get("[data-qa-selector='sign_in_tab']").should("be.visible")
+    cy.url().should('be.equal', `${Cypress.config('baseUrl')}/users/sign_in`)
   })
 })

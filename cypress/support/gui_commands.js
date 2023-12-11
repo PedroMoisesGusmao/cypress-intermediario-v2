@@ -40,6 +40,6 @@ Cypress.Commands.add('login', (
 })
 
 Cypress.Commands.add('logout', () => {
-    cy.get("[data-qa-selector='user_menu']").click()
-    cy.get("[data-qa-selector='sign_out_link']").click()
+    cy.get(".qa-user-avatar").click()
+    cy.contains('Sign out').click()
 })
