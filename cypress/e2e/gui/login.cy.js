@@ -1,12 +1,11 @@
-describe('Login', () => {
-  beforeEach(function() {
-    cy.login()
-    cy.visit('/')
-  })
-  
+describe('Login', () => {  
   it('successfully', () => {
-    cy.logout()
+    const user = Cypress.env('user.name')
+    const password = Cypress.env('user_password')
+    const options = { cacheSession: false}
 
-    cy.url().should('be.equal', `${Cypress.config('baseUrl')}/users/sign_in`)
+    cy.login(user, password, options)
+
+    cy.get('.qa-user-avatar').should('be.visible')
   })
 })
