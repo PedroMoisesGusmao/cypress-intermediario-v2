@@ -23,7 +23,7 @@ Cypress.Commands.add('api_getAllProjects', () => {
   })
 })
 
-Cypress.Commands.add('api_deleteProjects', projectId => {
+Cypress.Commands.add('api_deleteProjects', () => {
   cy.api_getAllProjects()
      .then(res => {
       res.body.forEach(project => cy.request({
